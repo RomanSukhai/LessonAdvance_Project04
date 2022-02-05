@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>Magazine_Of_Pages_Lesson_04</display-name>
+  <welcome-file-list>
+    <welcome-file>HeaderPages.html</welcome-file>
+    <welcome-file>HeaderPages.htm</welcome-file>
+    <welcome-file>HeaderPages.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>exit</servlet-name>
+  	<servlet-class>ua.lviv.lgs.RegistrationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>exit</servlet-name>
+  	<url-pattern>/exit</url-pattern>
+  </servlet-mapping>  
+  
+</web-app>
