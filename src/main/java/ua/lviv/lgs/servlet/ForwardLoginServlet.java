@@ -1,4 +1,4 @@
-package ua.lviv.lgs;
+package ua.lviv.lgs.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

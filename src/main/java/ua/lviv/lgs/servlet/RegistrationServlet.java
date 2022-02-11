@@ -1,12 +1,13 @@
-package ua.lviv.lgs;
+package ua.lviv.lgs.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import ua.lviv.lgs.domain.Shop;
+import ua.lviv.lgs.domain.User;
 
 
 public class RegistrationServlet extends HttpServlet {
@@ -38,7 +39,7 @@ public class RegistrationServlet extends HttpServlet {
 		}
 		else if(emailUser==null || nameUser==null || passwordUser==null) {
 			response.sendError(response.SC_FORBIDDEN,"Regestration error");
-		}else if(user.getEmailUser().equals(emailUser)){
+		}else if(user.getUserEmail().equals(emailUser)){
 		    request.getRequestDispatcher("LoginPages.jsp").forward(request, response);
 		}else {
 			Shop.getShop().addUser(new User(nameUser,passwordUser,emailUser));

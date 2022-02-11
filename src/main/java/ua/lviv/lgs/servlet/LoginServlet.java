@@ -1,4 +1,4 @@
-package ua.lviv.lgs;
+package ua.lviv.lgs.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,7 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import ua.lviv.lgs.domain.User;
+import ua.lviv.lgs.domain.Shop;
 
 /**
  * Servlet implementation class LoginServlet
@@ -25,10 +26,10 @@ public class LoginServlet extends HttpServlet {
 		if(user==null) {
 			request.getRequestDispatcher("HeaderPages.jsp").forward(request, response);
 		}
-		if(!user.getEmailUser().equals(emailUser) && !user.getPasswordUser().equals(passwordUser)) {
+		if(!user.getUserEmail().equals(emailUser) && !user.getPassword().equals(passwordUser)) {
 			response.sendError(response.SC_FORBIDDEN,"Regestration error");
 		}
-		else if(user.getEmailUser().equals(emailUser) && user.getPasswordUser().equals(passwordUser)) {
+		else if(user.getUserEmail().equals(emailUser) && user.getPassword().equals(passwordUser)) {
 			request.setAttribute("emailUser", emailUser);
 			request.setAttribute("passwordUser", passwordUser);
 			request.getRequestDispatcher("PagesWithMagazines.jsp").forward(request, response);

@@ -1,4 +1,4 @@
-package ua.lviv.lgs;
+package ua.lviv.lgs.domain;
 
 public interface ShopAble {
 	User getUser(String email);

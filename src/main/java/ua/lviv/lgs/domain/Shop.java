@@ -1,4 +1,4 @@
-package ua.lviv.lgs;
+package ua.lviv.lgs.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,9 @@ public class Shop implements ShopAble{
 	}
 
 	public User getUser(String email) {
-		return getListOfUser().stream().filter(x->x.getEmailUser().equals(email)).findAny().orElse(null);	
+		return getListOfUser().stream().filter(x->x.getUserEmail().equals(email)).findAny().orElse(null);	
 	}
+	
 	
 	@Override
 	public Magazine getMagazine(String name) {
@@ -35,7 +36,7 @@ public class Shop implements ShopAble{
 		
 	}
 
-	static Shop getShop() {
+	public static Shop getShop() {
 		if(shop==null) {
 			shop = new Shop();
 		}
