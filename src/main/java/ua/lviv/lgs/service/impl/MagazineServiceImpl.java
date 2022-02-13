@@ -2,20 +2,31 @@ package ua.lviv.lgs.service.impl;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import org.apache.log4j.Logger;
+
 import ua.lviv.lgs.dao.MagazineDao;
 import ua.lviv.lgs.dao.daoimpl.MagazineDaoImpl;
 import ua.lviv.lgs.domain.Magazine;
 import ua.lviv.lgs.service.MagazineService;
 
 public class MagazineServiceImpl implements MagazineService{
-	MagazineDao productDao;
-	
-	public MagazineServiceImpl() {
+	private MagazineDao productDao;
+	private static MagazineService magazineServiceImpl;
+	private static final Logger LOGGER = Logger.getLogger(MagazineServiceImpl.class);
+
+	private MagazineServiceImpl() {
 		try {
 			productDao = new MagazineDaoImpl();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
+	}
+	public static MagazineService getMagazineServiceImpl() {
+		if(magazineServiceImpl==null) {
+			magazineServiceImpl=new MagazineServiceImpl();
+		}
+		return magazineServiceImpl;
 	}
 
 	@Override
@@ -23,7 +34,7 @@ public class MagazineServiceImpl implements MagazineService{
 		try {
 			productDao.readAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 	}
 

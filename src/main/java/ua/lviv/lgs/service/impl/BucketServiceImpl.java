@@ -3,6 +3,8 @@ package ua.lviv.lgs.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import ua.lviv.lgs.dao.BucketDao;
 import ua.lviv.lgs.dao.daoimpl.BucketDaoImpl;
 import ua.lviv.lgs.domain.Bucket;
@@ -10,13 +12,21 @@ import ua.lviv.lgs.service.BucketService;
 
 public class BucketServiceImpl implements BucketService{
 	private BucketDao bucketDao;
+	private static BucketService bucketServiceImpl;
+	private static final Logger LOGGER = Logger.getLogger(BucketServiceImpl.class);
 	
-	public BucketServiceImpl() {
+	private BucketServiceImpl() {
 		try {
 			bucketDao = new BucketDaoImpl();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
+	}
+	public static BucketService getBucketServiceImpl() {
+		if(bucketServiceImpl==null) {
+			bucketServiceImpl=new BucketServiceImpl();
+		}
+		return bucketServiceImpl;
 	}
 
 	@Override
@@ -24,7 +34,7 @@ public class BucketServiceImpl implements BucketService{
 		try {
 			bucketDao.readAll();
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 	}
 

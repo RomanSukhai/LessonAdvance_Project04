@@ -1,6 +1,11 @@
 package ua.lviv.lgs.dao.daoimpl;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.crypto.Data;
@@ -8,6 +13,7 @@ import ua.lviv.lgs.dao.BucketDao;
 import ua.lviv.lgs.domain.Bucket;
 import ua.lviv.lgs.mappers.BucketMapper;
 import ua.lviv.lgs.untils.ConectorUtils;
+import org.apache.log4j.Logger;
 
 public class BucketDaoImpl implements BucketDao{
 	private final static String READ_BY_ALL 			= "SELECT * FROM bucket";
@@ -19,6 +25,7 @@ public class BucketDaoImpl implements BucketDao{
 	private final static String READ_BY_USER_ID 		= "SELECT user_id FROM bucket";
 	private final static String READ_BY_PURCHASE_DATE 	= "SELECT purchase_date FROM bucket";
 	private final static String DROP_TABLE 				= "DROP TABLE IF EXISTS bucket";
+	private final static Logger LOGER = Logger.getLogger(BucketDaoImpl.class);
 	
 	
 	private Connection connection;
@@ -38,7 +45,7 @@ public class BucketDaoImpl implements BucketDao{
 			preparedStatement.setInt(1,id);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGER.error(e);
 		}
 		
 	}
@@ -49,7 +56,7 @@ public class BucketDaoImpl implements BucketDao{
 			preparedStatement = connection.prepareStatement(DROP_TABLE);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGER.error(e);
 		}
 		
 	}
@@ -65,7 +72,7 @@ public class BucketDaoImpl implements BucketDao{
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
 			bucket.setId(resultSet.getInt(1));
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGER.error(e);
 		}
 		return bucket;
 		
@@ -84,7 +91,7 @@ public class BucketDaoImpl implements BucketDao{
 			Data purchese_date = (Data) resultSet.getDate("purchese_date");
 			bucket = new Bucket(bucketid,user_id,product_id,purchese_date);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGER.error(e);
 		}return bucket;	
 		
 	}
@@ -99,7 +106,7 @@ public class BucketDaoImpl implements BucketDao{
 			preparedStatement.setInt(4,id);
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGER.error(e);
 		}
 		return bucket;
 		
@@ -111,7 +118,7 @@ public class BucketDaoImpl implements BucketDao{
 			preparedStatement = connection.prepareStatement(READ_BY_PRODUCT_ID);
 			preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGER.error(e);
 		}
 		
 	}
@@ -122,7 +129,7 @@ public class BucketDaoImpl implements BucketDao{
 			preparedStatement = connection.prepareStatement(READ_BY_USER_ID);
 			preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGER.error(e);
 		}
 		
 	}
@@ -133,7 +140,7 @@ public class BucketDaoImpl implements BucketDao{
 			preparedStatement = connection.prepareStatement(READ_BY_PRODUCT_ID);
 			preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGER.error(e);
 		}
 		
 	}
@@ -145,7 +152,7 @@ public class BucketDaoImpl implements BucketDao{
 			preparedStatement.executeQuery();
 		}
 		catch (Exception e) {
-				// TODO: handle exception
+			LOGER.error(e);
 		}
 	}
 
@@ -160,7 +167,7 @@ public class BucketDaoImpl implements BucketDao{
 			}
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
+			LOGER.error(e);
 		}
 			return animal;
 	}

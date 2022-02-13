@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
+
 import ua.lviv.lgs.dao.MagazineDao;
 import ua.lviv.lgs.domain.Magazine;
 import ua.lviv.lgs.mappers.ProductMapper;
@@ -22,7 +25,7 @@ public class MagazineDaoImpl implements MagazineDao{
 	private final static String READ_BY_PAGES 			= "SELECT pages FROM product";
 	private final static String READ_BY_PRICE			= "SELECT price FROM product";
 	private final static String DROP_TABLE 				= "DROP TABLE IF EXISTS product";
-	
+	private final static Logger LOGGER = Logger.getLogger(MagazineDaoImpl.class);
 	
 	private Connection connection;
 	private PreparedStatement preparedStatement ;
@@ -46,7 +49,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			resultSet.next();
 					
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		return product;
 		
@@ -67,7 +70,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			product = new Magazine(productid,name, pages, information, price);
 			return product;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}return product;	
 	}
 
@@ -78,7 +81,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement.setInt(1,id);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 	}
 
@@ -88,7 +91,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement = connection.prepareStatement(DROP_TABLE);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 	}
 
@@ -103,7 +106,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement.setInt(5, id);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		return product;
 	}
@@ -114,7 +117,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement = connection.prepareStatement(READ_BY_ALL);
 			preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 	}
 	
@@ -130,7 +133,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement = connection.prepareStatement(READ_BY_NAME);
 			preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		
 		
@@ -142,7 +145,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement = connection.prepareStatement(READ_BY_PAGES);
 			preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		
 		
@@ -154,7 +157,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement = connection.prepareStatement(READ_BY_PRICE);
 			preparedStatement.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		
 		
@@ -171,7 +174,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			}
 		} 
 		catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 			return product;
 	}

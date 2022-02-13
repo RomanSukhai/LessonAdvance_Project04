@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form action="login" method="get">
-		<h2 class="header_title">Form login ${nameUser} ${emailUser} ${passwordUser}</h2>
+		<h2 class="header_title">Form login</h2>
 		<div class="input-container">
 		  <i class="fa fa-user icon"></i>
 		  <input class="input-field" type="text" placeholder="Email" name="emailUser">
@@ -18,7 +18,7 @@
 	  
 		<div class="input-container">
 		  <i class="fa fa-key icon"></i>
-		  <input class="input-field" type="password" placeholder="Password" name="passwordUser">
+		  <input class="input-field" type="text" placeholder="Password" name="passwordUser">
 		</div>
 	  
 		<button type="submit" class="btn">Login</button>

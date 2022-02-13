@@ -8,11 +8,11 @@ public class Shop implements ShopAble{
 	private List<Magazine> listOfMagazine;
 	private static List<User> listOfUser;
 	
-	public Shop() {
-		this.shop = shop;
-		this.listOfMagazine = listOfMagazine;
-		this.listOfUser = listOfUser;
+	private Shop() {
+		
 	}
+	
+	
 
 	public User getUser(String email) {
 		return getListOfUser().stream().filter(x->x.getUserEmail().equals(email)).findAny().orElse(null);	

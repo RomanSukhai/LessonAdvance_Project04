@@ -1,0 +1,1 @@
+2022-02-13 21:16:40 ERROR UserDaoImpl:184 - java.sql.SQLException: Column 'passwordUser' not found.
