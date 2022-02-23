@@ -14,5 +14,4 @@
   	<servlet-name>exit</servlet-name>
   	<url-pattern>/exit</url-pattern>
   </servlet-mapping>  
-  
 </web-app>

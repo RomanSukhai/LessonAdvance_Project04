@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
+import com.google.gson.Gson;
 import ua.lviv.lgs.domain.User;
+import ua.lviv.lgs.dto.UserLogin;
 import ua.lviv.lgs.service.UserService;
 import ua.lviv.lgs.service.impl.UserServiceImpl;
 
@@ -21,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 
      
   
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String emailUser = request.getParameter("emailUser");
 		String passwordUser = request.getParameter("passwordUser");
 		User user = null;
@@ -30,11 +32,17 @@ public class LoginServlet extends HttpServlet {
 		} catch (SQLException e) {
 			LOGGER.error(e);
 		}
-		
 		if(user!=null && user.getUserEmail().equals(emailUser) && user.getPassword().equals(passwordUser)) {
-			request.setAttribute("emailUser", emailUser);
-			request.setAttribute("passwordUser", passwordUser);
-			request.getRequestDispatcher("PagesWithMagazines.jsp").forward(request, response);
+			UserLogin userLogin = new UserLogin();
+			userLogin.destinationUrl = "PagesWithMagazines.jsp";
+			userLogin.UserEmail = user.getUserEmail();
+			
+			Gson gsonr = new Gson();
+			String jsonr = gsonr.toJson(userLogin);
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(jsonr);
+			response.getWriter().close();
 		}
 		else {
 			request.getRequestDispatcher("LoginPages.jsp").forward(request, response);
