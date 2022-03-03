@@ -59,7 +59,7 @@
                                             </div>
 
                                             <div class="form-outline mb-4">
-                                                <input type="email" id="nameUser" class="form-control" placeholder="Username" />
+                                                <input type="text" id="nameUser" class="form-control" placeholder="Username" />
                                                 <label class="form-label" for="form2Example11">Username</label>
                                             </div>
 
@@ -114,12 +114,17 @@
             <b>Password Confirm isn't correct!</b> Please print correct value
         </div>
 
-        <script src="JavaScript/registration.js"></script>
+        <script src="registrationAllElementAndLinkToTheOtherPages.js"></script>
 
         <jsp:include page="footer.jsp"></jsp:include>
-
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $('html').animate({
+                    scrollTop: $('.h-100.gradient-form').offset().top
+                },
+                500);
+        </script>
+
     </body>
 
     </html>

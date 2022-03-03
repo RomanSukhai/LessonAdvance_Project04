@@ -48,7 +48,7 @@ public class RegistrationServlet extends HttpServlet {
 				
 			}else if(user.getUserEmail().equals(emailUser)){
 				UserLogin userLogin = new UserLogin();
-				userLogin.destinationUrl = "PagesWithMagazines.jsp";
+				userLogin.destinationUrl = "LoginPages.jsp";
 				
 				Gson gsonr = new Gson();
 				String jsonr = gsonr.toJson(userLogin);

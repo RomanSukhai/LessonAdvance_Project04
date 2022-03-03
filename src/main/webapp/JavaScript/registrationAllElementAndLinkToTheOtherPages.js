@@ -84,4 +84,36 @@ $(document).ready(function() {
         })
 
     })
+    $('.nav-link#loginPage').click(function() {
+        $.get('forwardLogin', function(data) {
+            var customUrl = '';
+            var url = data.destinationUrl;
+            debugger;
+            var UrlContent = window.location.href.split('/');
+            console.log(UrlContent);
+            for (let i = 0; i < UrlContent.length - 1; i++) {
+                customUrl += UrlContent[i] + '/';
+            }
+            customUrl += url;
+            debugger;
+            window.location = customUrl;
+        })
+
+    })
+    $('.nav-link#add').click(function() {
+        $.get('forwardCreateProductServlet', function(data) {
+            var customUrl = '';
+            var url = data.destinationUrl;
+            debugger;
+            var UrlContent = window.location.href.split('/');
+            console.log(UrlContent);
+            for (let i = 0; i < UrlContent.length - 1; i++) {
+                customUrl += UrlContent[i] + '/';
+            }
+            customUrl += url;
+            debugger;
+            window.location = customUrl;
+        })
+
+    })
 })

@@ -6,18 +6,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.google.gson.Gson;
-
 import ua.lviv.lgs.dto.UserLogin;
 
-@WebServlet(name = "forwardLogin", urlPatterns = { "/forwardLogin" })
-public class ForwardLoginServlet extends HttpServlet {
+@WebServlet(name = "forwardCreateProductServlet", urlPatterns = { "/forwardCreateProductServlet" })
+public class ForwardCreateProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
+	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserLogin userLogin = new UserLogin();
-		userLogin.destinationUrl = "LoginPages.jsp";
+		userLogin.destinationUrl = "createProduct.jsp";
 		Gson gsonr = new Gson();
 		String jsonr = gsonr.toJson(userLogin);
 		response.setContentType("application/json");
@@ -26,5 +25,6 @@ public class ForwardLoginServlet extends HttpServlet {
 		response.getWriter().close();
 		
 	}
+
 
 }

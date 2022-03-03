@@ -20,18 +20,18 @@
               </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home</a>
+                        <li class="nav-item">
+                            <a type="submit" id="loginPage" class="nav-link">LogOut</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a type="submit" id="add" class="nav-link ">Add Magazine</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
+                            <a type="submit" id="bucket" class="nav-link ">Bucket</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -83,6 +83,8 @@
                 <p class="lead">The background images for the slider are set directly in the HTML using inline CSS. The images in this snippet are from <a href="https://unsplash.com">Unsplash</a>!</p>
             </div>
         </section>
+        <script src="JavaScript/headerCode.js"></script>
+        <script src="JavaScript/registrationAllElementAndLinkToTheOtherPages.js"></script>
     </body>
 
     </html>

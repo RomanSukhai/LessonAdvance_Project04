@@ -1,34 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html>
 
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="style/login.css">
-        <link rel="stylesheet" href="style/header.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Insert title here</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <title>Header Pages</title>
+        <link rel="stylesheet" href="style/header.css">
     </head>
 
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-        <!-- <form action="login" method="get">
-    		<h2 class="header_title">Form login</h2>
-    		<div class="input-container">
-    			<i class="fa fa-user icon"></i>
-    			<input class="input-field" type="text" placeholder="Email" name="emailUser">
-    		</div>
-    
-    		<div class="input-container">
-    			<i class="fa fa-key icon"></i>
-    			<input class="input-field" type="text" placeholder="Password" name="passwordUser">
-    		</div>
-    
-    		<button type="submit" class="btn">Login</button>
-    	</form>-->
-
-        <!--                              -->
         <section class="h-100 gradient-form" style="background-color: #eee;">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -44,20 +27,30 @@
                                         </div>
 
                                         <form>
-                                            <p>Please login to your account</p>
+                                            <p>Please Create new Magazine</p>
 
                                             <div class="form-outline mb-4">
-                                                <input type="email" id="emailUser" class="form-control" placeholder="Phone number or email address" />
-                                                <label class="form-label" for="form2Example11">Email</label>
+                                                <input type="text" id="name" class="form-control" placeholder="magazine name" />
+                                                <label class="form-label" for="form2Example11">Name</label>
                                             </div>
 
                                             <div class="form-outline mb-4">
-                                                <input type="password" id="passwordUser" class="form-control" />
-                                                <label class="form-label" for="form2Example22">Password</label>
+                                                <input type="number" id="pages" class="form-control" placeholder="magazine pages" />
+                                                <label class="form-label" for="form2Example22">Pages</label>
+                                            </div>
+
+                                            <div class="form-outline mb-4">
+                                                <input type="text" id="information" class="form-control" placeholder="magazine information" />
+                                                <label class="form-label" for="form2Example22">Information</label>
+                                            </div>
+
+                                            <div class="form-outline mb-4">
+                                                <input type="number" step="0.01" max="1000" min="0" id="price" class="form-control" placeholder="magazine price" />
+                                                <label class="form-label" for="form2Example22">Price</label>
                                             </div>
 
                                             <div class="text-center pt-1 mb-5 pb-1">
-                                                <button style="width: 300px;" id="login" class="btn crossClass btn-primary btn-block fa-lg gradient-custom-2 mb-3 my-gradient my-gradient2" type="button">Log in</button>
+                                                <button style="width: 300px;" id="magazine" class="btn crossClass btn-primary btn-block fa-lg gradient-custom-2 mb-3 my-gradient my-gradient2" type="button">Log in</button>
                                             </div>
                                         </form>
 
@@ -92,25 +85,16 @@
             Password must be bigger of the 8 sumbols
         </div>
 
-        <div class="alert alert-warning2 w-25 disp-none" style="margin: auto;" role="alert">
-            <b>This login haven't!</b> Please registration on the previous page
-        </div>
-
         <div class="alert alert-warning w-25 disp-none" id="confirm" style="margin: auto;" role="alert">
             <b>Password Confirm isn't correct!</b> Please print correct value
         </div>
-        <script src="JavaScript/registrationAllElementAndLinkToTheOtherPages.js"></script>
-        <jsp:include page="footer.jsp"></jsp:include>
 
+
+
+        <jsp:include page="footer.jsp"></jsp:include>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-            $('html').animate({
-                    scrollTop: $('.h-100.gradient-form').offset().top
-                },
-                500);
+        <script src="JavaScript/allForCreatedBucketAndthisPages.js">
         </script>
     </body>
-
-    </html>
 
     </html>
