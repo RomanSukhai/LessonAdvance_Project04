@@ -267,11 +267,11 @@
         G = { ArrowLeft: Q, ArrowRight: Y };
     class Z extends H {
         constructor(t, e) { super(t), this._items = null, this._interval = null, this._activeElement = null, this._isPaused = !1, this._isSliding = !1, this.touchTimeout = null, this.touchStartX = 0, this.touchDeltaX = 0, this._config = this._getConfig(e), this._indicatorsElement = U.findOne(".carousel-indicators", this._element), this._touchSupported = "ontouchstart" in document.documentElement || navigator.maxTouchPoints > 0, this._pointerEvent = Boolean(window.PointerEvent), this._addEventListeners() }
-        static get Default() { return $ }
-        static get NAME() { return "carousel" }
-        next() { this._slide(K) }
-        nextWhenVisible() {!document.hidden && a(this._element) && this.next() }
-        prev() { this._slide(X) }
+        static get Default() { return $ };
+        static get NAME() { return "carousel" };
+        next() { this._slide(K) };
+        nextWhenVisible() {!document.hidden && a(this._element) && this.next() };
+        prev() { this._slide(X) };
         pause(t) { t || (this._isPaused = !0), U.findOne(".carousel-item-next, .carousel-item-prev", this._element) && (n(this._element), this.cycle(!0)), clearInterval(this._interval), this._interval = null }
         cycle(t) { t || (this._isPaused = !1), this._interval && (clearInterval(this._interval), this._interval = null), this._config && this._config.interval && !this._isPaused && (this._updateInterval(), this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval)) }
         to(t) {

@@ -52,7 +52,6 @@ public class UserDaoImpl implements UserDao{
 			preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
 			resultSet.next();
-			user.setId(resultSet.getInt(1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -174,11 +173,12 @@ public class UserDaoImpl implements UserDao{
 			preparedStatement = connection.prepareStatement(READ_BY_EMAIL);
 			preparedStatement.setString(1, userEmail);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			if(resultSet.next()) {
+			if(resultSet.next()){
+				Integer id = resultSet.getInt("id");
 				String nameEmail = resultSet.getString("userEmail");
 				String userName = resultSet.getString("userName");
 				String password = resultSet.getString("password");
-				user = new User(password, nameEmail,userName);
+				user = new User(id,password, nameEmail,userName);
 			}
 		} catch (SQLException e) {
 			LOGGER.error(e);

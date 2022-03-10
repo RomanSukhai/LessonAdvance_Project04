@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import com.google.gson.Gson;
 import ua.lviv.lgs.domain.User;
@@ -33,10 +35,11 @@ public class LoginServlet extends HttpServlet {
 			LOGGER.error(e);
 		}
 		if(user!=null && user.getUserEmail().equals(emailUser) && user.getPassword().equals(passwordUser)) {
+			HttpSession session = request.getSession(true);
+			session.setAttribute("user_id",user.getId());
 			UserLogin userLogin = new UserLogin();
 			userLogin.destinationUrl = "PagesWithMagazines.jsp";
 			userLogin.UserEmail = user.getUserEmail();
-			
 			Gson gsonr = new Gson();
 			String jsonr = gsonr.toJson(userLogin);
 			response.setContentType("application/json");

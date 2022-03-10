@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.crypto.Data;
+
+import javax.servlet.http.HttpSession;
+
 import ua.lviv.lgs.dao.BucketDao;
 import ua.lviv.lgs.domain.Bucket;
 import ua.lviv.lgs.mappers.BucketMapper;
@@ -66,12 +68,11 @@ public class BucketDaoImpl implements BucketDao{
 			preparedStatement = connection.prepareStatement(CREATE_BY,Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setInt(1,bucket.getUser_id());
 			preparedStatement.setInt(2,bucket.getProduct_id());
-			preparedStatement.setDate(3, new Date(bucket.getPurchase_date().getTime()));
-			preparedStatement.executeQuery();
-			
+			preparedStatement.setDate(3,(java.sql.Date) new Date(bucket.getPurchase_date().getTime()));
+			preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
-			bucket.setId(resultSet.getInt(1));
-		} catch (SQLException e) {
+			resultSet.next();
+		} catch (SQLException e) { 
 			LOGER.error(e);
 		}
 		return bucket;
@@ -88,7 +89,7 @@ public class BucketDaoImpl implements BucketDao{
 			Integer bucketid = resultSet.getInt("id");
 			Integer user_id = resultSet.getInt("user_id");
 			Integer product_id = resultSet.getInt("product_id");
-			Data purchese_date = (Data) resultSet.getDate("purchese_date");
+			java.sql.Date purchese_date =  resultSet.getDate("purchese_date");
 			bucket = new Bucket(bucketid,user_id,product_id,purchese_date);
 		} catch (SQLException e) {
 			LOGER.error(e);
@@ -102,7 +103,7 @@ public class BucketDaoImpl implements BucketDao{
 			preparedStatement = connection.prepareStatement(UPDATE_BY_ID);
 			preparedStatement.setInt(1,bucket.getUser_id());
 			preparedStatement.setInt(2,bucket.getProduct_id());
-			preparedStatement.setDate(3, bucket.getPurchase_date());
+			preparedStatement.setDate(3,bucket.getPurchase_date());
 			preparedStatement.setInt(4,id);
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
@@ -158,18 +159,18 @@ public class BucketDaoImpl implements BucketDao{
 
 	@Override
 	public List<Bucket> readAll(){
-			List<Bucket> animal = new ArrayList<>();
+			List<Bucket> bucket = new ArrayList<>();
 		try {
 			preparedStatement = connection.prepareStatement(READ_BY_ALL);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
-					animal.add(BucketMapper.map(resultSet));
+				bucket.add(BucketMapper.map(resultSet));
 			}
 		} 
 		catch (Exception e) {
 			LOGER.error(e);
 		}
-			return animal;
+			return bucket;
 	}
 
 }

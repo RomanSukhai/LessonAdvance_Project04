@@ -2,6 +2,9 @@ package ua.lviv.lgs.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Random;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +28,7 @@ import ua.lviv.lgs.service.impl.UserServiceImpl;
 public class Product extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MagazineService magazineService = MagazineServiceImpl.getMagazineServiceImpl();
-	private static final Logger LOGGER = Logger.getLogger(RegistrationServlet.class);
+	private static final Logger LOGGER = Logger.getLogger(Product.class);
        
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +45,8 @@ public class Product extends HttpServlet {
 		if(!name.isEmpty() && !pages.isEmpty() && !information.isEmpty()) {
 			if(magazine == null) {
 				try {
-					magazineService.create(new Magazine(name,pages_Integer,information,price_Double));
+					Magazine magazineObject = new Magazine(name,pages_Integer,information,price_Double);
+					magazineService.create(magazineObject);
 				} catch (SQLException e) {
 					LOGGER.error(e);
 				}
@@ -76,8 +80,14 @@ public class Product extends HttpServlet {
    
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String productId = request.getParameter("id");
+		try {
+			Magazine product  = magazineService.read(Integer.parseInt(productId));
+			request.setAttribute("product", product);
+			request.getRequestDispatcher("singleMagazine.jsp").forward(request, response);
+		} catch (NumberFormatException | SQLException e) {
+			LOGGER.error(e);
+		}
 	}
 	//to 
 

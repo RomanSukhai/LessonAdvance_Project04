@@ -7,11 +7,13 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/login.css">
+        <link rel="stylesheet" href="style/cabinet.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <title>Insert title here</title>
     </head>
 
     <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container">
                 <a class="navbar-brand font-weight-bold" href="#">Magazine Shop</a>
@@ -27,7 +29,7 @@
                             <a type="submit" id="add" class="nav-link ">Add Magazine</a>
                         </li>
                         <li class="nav-item">
-                            <a type="submit" id="bucket" class="nav-link ">Bucket</a>
+                            <a href='${pageContext.request.contextPath}/PagesWithMagazines.jsp' type="submit" id="bucket" class="nav-link ">Bucket</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
@@ -83,8 +85,11 @@
                 <p class="lead">The background images for the slider are set directly in the HTML using inline CSS. The images in this snippet are from <a href="https://unsplash.com">Unsplash</a>!</p>
             </div>
         </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="JavaScript/headerCode.js"></script>
-        <script src="JavaScript/registrationAllElementAndLinkToTheOtherPages.js"></script>
+        <script src="cabinetMove.js"></script>
+        <script src="registrationAllElementAndLinkToTheOtherPages.js"></script>
+
     </body>
 
     </html>

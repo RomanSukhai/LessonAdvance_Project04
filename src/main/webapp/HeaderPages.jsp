@@ -14,27 +14,7 @@
 
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-        <!-- <form action="exit" method="post">
-		<h2 class="header_title">Form registration</h2>
-		<div class="input-container">
-		  <i class="fa fa-envelope icon"></i>
-		  <input class="input-field" type="text" placeholder="Email" name="emailUser">
-		</div>
-	  
-		<div class="input-container">
-		  <i class="fa fa-user icon"></i>
-		  <input class="input-field" type="text" placeholder="Name" name="nameUser">
-		</div>
-		
-		<div class="input-container">
-		  <i class="fa fa-key icon"></i>
-		  <input class="input-field" type="password" placeholder="Password" name="passwordUser">
-		</div>
-	  
-		<button type="submit" class="btn">Register</button>
-	  </form> -->
 
-        <!--                              -->
 
         <section class="h-100 gradient-form" style="background-color: #eee;">
             <div class="container py-5 h-100">

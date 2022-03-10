@@ -16,11 +16,11 @@ import ua.lviv.lgs.mappers.ProductMapper;
 import ua.lviv.lgs.untils.ConectorUtils;
 
 public class MagazineDaoImpl implements MagazineDao{
-	private final static String READ_BY_ALL 			= "SELECT * FROM product";
+	private final static String READ_BY_ALL 			= "SELECT id,name,pages,information,price FROM product";
 	private final static String CREATE_BY				= "INSERT INTO product(name,pages,information,price) VALUES (?,?,?,?)";
-	private final static String READ_BY_ID 				= "SELECT * FROM product WHERE id = ?";
+	private final static String READ_BY_ID 				= "SELECT * FROM product WHERE id=?";
 	private final static String UPDATE_BY_ID 			= "UPDATE product SET name=?,pages =?,information =?,price=? WHERE id = ?";
-	private final static String DELETE_BY_ID 			= "DELETE FROM product WHERE  id = ?";
+	private final static String DELETE_BY_ID 			= "DELETE FROM product WHERE  id=?";
 	private final static String READ_BY_NAME 			= "SELECT name  FROM product";
 	private final static String READ_BY_PAGES 			= "SELECT pages FROM product";
 	private final static String READ_BY_PRICE			= "SELECT price FROM product";
@@ -47,7 +47,6 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
 			resultSet.next();
-			product.setId(resultSet.getInt(1));
 					
 		} catch (Exception e) {
 			LOGGER.error(e);
@@ -63,13 +62,16 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement = connection.prepareStatement(READ_BY_ID);
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			Integer productid = resultSet.getInt("id");
-			String name = resultSet.getString("name");
-			Integer pages = resultSet.getInt("pages");
-			String information = resultSet.getString("information");
-			Double price = resultSet.getDouble("price");
-			product = new Magazine(productid,name, pages, information, price);
-			return product;
+			if (resultSet.next()) {
+				Integer productid = resultSet.getInt("id");
+				String name = resultSet.getString("name");
+				Integer pages = resultSet.getInt("pages");
+				String information = resultSet.getString("information");
+				Double price = resultSet.getDouble("price");
+				product = new Magazine(productid,name, pages, information, price);
+				resultSet.next();
+				return product;
+			}
 		} catch (SQLException e) {
 			LOGGER.error(e);
 		}return product;	

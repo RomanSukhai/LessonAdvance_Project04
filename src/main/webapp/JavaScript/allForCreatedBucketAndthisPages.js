@@ -32,7 +32,7 @@ $(document).ready(function() {
             debugger;
             window.location = customUrl;
             console.log(email)
-
         })
+        debugger
     })
 })

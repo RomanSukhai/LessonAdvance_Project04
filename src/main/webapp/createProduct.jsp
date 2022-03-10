@@ -29,6 +29,8 @@
                                         <form>
                                             <p>Please Create new Magazine</p>
 
+
+
                                             <div class="form-outline mb-4">
                                                 <input type="text" id="name" class="form-control" placeholder="magazine name" />
                                                 <label class="form-label" for="form2Example11">Name</label>
@@ -93,7 +95,8 @@
 
         <jsp:include page="footer.jsp"></jsp:include>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="JavaScript/allForCreatedBucketAndthisPages.js">
+        <script src="JavaScript/allForCreatedBucketAndthisPages.js"></script>
+        <script src="registrationAllElementAndLinkToTheOtherPages.js">
         </script>
     </body>
 

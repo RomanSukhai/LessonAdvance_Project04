@@ -1,27 +1,29 @@
 package ua.lviv.lgs.domain;
 
-import java.sql.Date;
+
+import java.sql.*;
 import java.util.Objects;
 
 import javax.xml.crypto.Data;
+
 
 public class Bucket {
 	private Integer id;
 	private Integer user_id;
 	private Integer product_id;
-	private Data purchase_date;
-	public Bucket(Integer id, Integer user_id, Integer product_id, Data purchase_date) {
+	private Date purchase_date;
+	public Bucket(Integer id, Integer user_id, Integer product_id, Date purchese_date) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
 		this.product_id = product_id;
-		this.purchase_date = purchase_date;
+		this.purchase_date = purchese_date;
 	}
-	public Bucket(Integer user_id, Integer product_id, Data purchase_date) {
+	public Bucket(Integer user_id, Integer product_id, Date date) {
 		super();
 		this.user_id = user_id;
 		this.product_id = product_id;
-		this.purchase_date = purchase_date;
+		this.purchase_date =  date;
 	}
 	public Integer getId() {
 		return id;
@@ -42,9 +44,9 @@ public class Bucket {
 		this.product_id = product_id;
 	}
 	public Date getPurchase_date() {
-		return (Date) purchase_date;
+		return  (Date) purchase_date;
 	}
-	public void setPurchase_date(Data purchase_date) {
+	public void setPurchase_date(Date purchase_date) {
 		this.purchase_date = purchase_date;
 	}
 	@Override

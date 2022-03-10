@@ -99,9 +99,9 @@
         <div class="alert alert-warning w-25 disp-none" id="confirm" style="margin: auto;" role="alert">
             <b>Password Confirm isn't correct!</b> Please print correct value
         </div>
-        <script src="JavaScript/registrationAllElementAndLinkToTheOtherPages.js"></script>
+        <script src="registrationAllElementAndLinkToTheOtherPages.js"></script>
         <jsp:include page="footer.jsp"></jsp:include>
-
+        <script src="cabinetMove.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
             $('html').animate({
