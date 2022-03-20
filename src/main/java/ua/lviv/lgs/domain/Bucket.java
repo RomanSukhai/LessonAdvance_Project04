@@ -1,10 +1,9 @@
 package ua.lviv.lgs.domain;
 
 
-import java.sql.*;
+import java.sql.Date;
 import java.util.Objects;
 
-import javax.xml.crypto.Data;
 
 
 public class Bucket {

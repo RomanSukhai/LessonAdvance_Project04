@@ -2,6 +2,7 @@ package ua.lviv.lgs.shared;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface AbstractCRUD<T> {
 	void readByAll() throws SQLException;
@@ -11,4 +12,5 @@ public interface AbstractCRUD<T> {
 	void delete(Integer id) throws SQLException;
 	void dropTableIfExists() throws SQLException;
 	List<T> readAll() throws SQLException, Exception;
+	
 }

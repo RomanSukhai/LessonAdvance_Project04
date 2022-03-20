@@ -118,20 +118,16 @@ $(document).ready(function() {
     })
 
     $('#buy').click(function() {
-        var productId = jQuery(this).attr('product-id');
- 
+        var productId = jQuery('#buy').attr('product-id');
+
         var id = {
             'productId': productId
         }
-debugger;
+
         $.post("bucket", id, function(data) {
-if(data=='Success'){
-$('#exampleModalCenter').hide();
-}
-            
-    
+            $('#exampleModalCenter').hide();
         })
-debugger;
+
 
     })
 })

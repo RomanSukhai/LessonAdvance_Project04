@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 			LOGGER.error(e);
 		}
 		if(user!=null && user.getUserEmail().equals(emailUser) && user.getPassword().equals(passwordUser)) {
-			HttpSession session = request.getSession(true);
+			HttpSession session = request.getSession();
 			session.setAttribute("user_id",user.getId());
 			UserLogin userLogin = new UserLogin();
 			userLogin.destinationUrl = "PagesWithMagazines.jsp";

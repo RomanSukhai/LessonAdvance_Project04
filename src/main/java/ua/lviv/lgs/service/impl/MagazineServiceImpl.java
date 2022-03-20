@@ -2,11 +2,15 @@ package ua.lviv.lgs.service.impl;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 
 import ua.lviv.lgs.dao.MagazineDao;
 import ua.lviv.lgs.dao.daoimpl.MagazineDaoImpl;
+import ua.lviv.lgs.domain.Bucket;
 import ua.lviv.lgs.domain.Magazine;
 import ua.lviv.lgs.service.MagazineService;
 
@@ -67,7 +71,11 @@ public class MagazineServiceImpl implements MagazineService{
 	public List<Magazine> readAll() throws SQLException, Exception {
 		return productDao.readAll();
 	}
-
+	@Override
+	public Map<Integer,Magazine> readAllMap() throws SQLException, Exception {
+		List<Magazine> list = readAll();
+		return list.stream().collect(Collectors.toMap(Magazine::getId, Function.identity()));
+	}
 	
 
 	

@@ -47,7 +47,6 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
 			resultSet.next();
-					
 		} catch (Exception e) {
 			LOGGER.error(e);
 		}

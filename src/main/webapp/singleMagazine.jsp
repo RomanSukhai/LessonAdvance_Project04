@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" product-id="${product.id}" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        <button onclick="" type="button" product-id="${product.id}" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
   Launch demo modal
 </button>
 
@@ -49,7 +49,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" product-id="${product.id}" id="buy" class="btn btn-primary buy-magazine">Buy Magazine</button>
+                        <button type="button" product-id="${product.id}" id="buy">Buy Magazine</button>
                     </div>
                 </div>
             </div>
@@ -58,6 +58,7 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="registrationAllElementAndLinkToTheOtherPages.js"></script>
+        <script src="bucket.js"></script>
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
 

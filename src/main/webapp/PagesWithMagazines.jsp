@@ -9,14 +9,24 @@
         <link rel="stylesheet" href="style/header.css">
         <link rel="stylesheet" href="style/login.css">
         <link rel="stylesheet" href="style/cabinet.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-        </script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="JavaScript/cabinetMove.js"></script>
+        <script src="bucket.js"></script>
+        <script src="bucket2.js"></script>
         <title>Insert title here</title>
     </head>
 
     <body>
         <jsp:include page="header.jsp"></jsp:include>
+        <jsp:include page="tableBucket.jsp"></jsp:include>
         <!-- #header -->
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+        <table id="myTable">
+
+        </table>
 
         <div id='cabinet-magazine'></div>
 
@@ -43,11 +53,7 @@
             Launch demo modal
           </button>
 
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="cabinetMove.js"></script>
-
+        
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
 

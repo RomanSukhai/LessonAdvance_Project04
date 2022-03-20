@@ -6,9 +6,10 @@ import ua.lviv.lgs.domain.Bucket;
 
 public class BucketMapper {
 	public static Bucket map(ResultSet resultSet) throws Exception {
-		Integer user_id= resultSet.getInt("name_animal");
-		Integer product_id = resultSet.getInt("type_animal");
+		Integer id =resultSet.getInt("id"); 
+		Integer user_id= resultSet.getInt("user_id");
+		Integer product_id = resultSet.getInt("product_id");
 		Date purchase_date = resultSet.getDate("purchase_date");
-		return new Bucket(user_id, product_id, purchase_date);
+		return new Bucket(id,user_id, product_id, purchase_date);
 	}
 }

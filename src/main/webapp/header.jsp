@@ -89,6 +89,7 @@
         <script src="JavaScript/headerCode.js"></script>
         <script src="cabinetMove.js"></script>
         <script src="registrationAllElementAndLinkToTheOtherPages.js"></script>
+        <script src="bucket.js"></script>
 
     </body>
 

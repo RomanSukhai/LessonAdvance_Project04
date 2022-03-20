@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
 
 public class BucketDaoImpl implements BucketDao{
 	private final static String READ_BY_ALL 			= "SELECT * FROM bucket";
+	private final static String READ_BY_ALLID 			= "SELECT product_id FROM bucket";
 	private final static String CREATE_BY				= "INSERT INTO bucket(user_id,product_id,purchase_date) VALUES (?,?,?)";
 	private final static String READ_BY_ID 				= "SELECT * FROM bucket WHERE id = ?";
 	private final static String UPDATE_BY_ID 			= "UPDATE bucket SET user_id=?,product_id=?,purchase_date=? WHERE id = ?";
@@ -70,8 +71,7 @@ public class BucketDaoImpl implements BucketDao{
 			preparedStatement.setInt(2,bucket.getProduct_id());
 			preparedStatement.setDate(3,(java.sql.Date) new Date(bucket.getPurchase_date().getTime()));
 			preparedStatement.executeUpdate();
-			ResultSet resultSet = preparedStatement.getGeneratedKeys();
-			resultSet.next();
+			
 		} catch (SQLException e) { 
 			LOGER.error(e);
 		}
@@ -172,5 +172,6 @@ public class BucketDaoImpl implements BucketDao{
 		}
 			return bucket;
 	}
+
 
 }
