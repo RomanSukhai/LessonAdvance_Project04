@@ -94,10 +94,10 @@
 
 
         <jsp:include page="footer.jsp"></jsp:include>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="JavaScript/allForCreatedBucketAndthisPages.js"></script>
         <script src="registrationAllElementAndLinkToTheOtherPages.js"></script>
-        <script src="bucket.js"></script>
-    </body>
-
+        <script src="JavaScript/bucket.js"></script>
     </html>

@@ -85,12 +85,12 @@
                 <p class="lead">The background images for the slider are set directly in the HTML using inline CSS. The images in this snippet are from <a href="https://unsplash.com">Unsplash</a>!</p>
             </div>
         </section>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+
+    </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="JavaScript/headerCode.js"></script>
         <script src="cabinetMove.js"></script>
         <script src="registrationAllElementAndLinkToTheOtherPages.js"></script>
-        <script src="bucket.js"></script>
-
-    </body>
-
+        <script src="JavaScript/bucket.js"></script>
     </html>
