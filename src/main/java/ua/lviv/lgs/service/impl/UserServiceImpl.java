@@ -69,4 +69,8 @@ public class UserServiceImpl implements UserService{
 	public User getByUseremail(String userEmail) throws SQLException {
 		return userDao.getByUseremail(userEmail);
 	}
+	@Override
+	public User getbyUserPassword(String password) throws SQLException {
+		return userDao.getByUserPassword(password);
+	}
 }

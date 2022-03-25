@@ -125,9 +125,9 @@ $(document).ready(function() {
         }
 
         $.post("bucket", id, function(data) {
-            $('#exampleModalCenter').hide();
+
         })
 
-
+        $('.modal.fade#exampleModalCenter').hide();
     })
 })

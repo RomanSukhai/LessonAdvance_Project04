@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 
 import ua.lviv.lgs.domain.Shop;
 import ua.lviv.lgs.domain.User;
+import ua.lviv.lgs.domain.UserRole;
 import ua.lviv.lgs.dto.UserLogin;
 import ua.lviv.lgs.service.UserService;
 import ua.lviv.lgs.service.impl.UserServiceImpl;
@@ -28,11 +29,16 @@ public class RegistrationServlet extends HttpServlet {
 		String nameUser = request.getParameter("nameUser");
 		String passwordUser = request.getParameter("passwordUser");
 		User user = Shop.getShop().getUser(emailUser);
-
+		try {
+			userService.create(new User("namor2004","admin@gmail.com","Roman",UserRole.ADMIN));
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		if(!emailUser.isEmpty() && !nameUser.isEmpty() && !passwordUser.isEmpty()) {
 			if(user == null) {
 				try {
-					userService.create(new User(passwordUser,emailUser,nameUser));
+					userService.create(new User(passwordUser,emailUser,nameUser,UserRole.USER));
 				} catch (SQLException e) {
 					LOGGER.error(e);
 				}
@@ -59,7 +65,7 @@ public class RegistrationServlet extends HttpServlet {
 			    
 			}else{
 				try{
-					userService.create(new User(passwordUser,emailUser,nameUser));
+					userService.create(new User(passwordUser,emailUser,nameUser,UserRole.USER));
 				}catch (SQLException e) {
 					LOGGER.error(e);
 				}

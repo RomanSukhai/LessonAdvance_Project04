@@ -29,14 +29,16 @@ public class LoginServlet extends HttpServlet {
 		String emailUser = request.getParameter("emailUser");
 		String passwordUser = request.getParameter("passwordUser");
 		User user = null;
+		
 		try {
-			user = userService.getByUseremail(emailUser);
+			user = userService.getByUseremail(emailUser)   ;
 		} catch (SQLException e) {
 			LOGGER.error(e);
 		}
 		if(user!=null && user.getUserEmail().equals(emailUser) && user.getPassword().equals(passwordUser)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user_id",user.getId());
+			session.setAttribute("role",user.getRole().toString());
 			UserLogin userLogin = new UserLogin();
 			userLogin.destinationUrl = "PagesWithMagazines.jsp";
 			userLogin.UserEmail = user.getUserEmail();

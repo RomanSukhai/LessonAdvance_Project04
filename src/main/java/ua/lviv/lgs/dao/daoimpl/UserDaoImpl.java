@@ -12,13 +12,15 @@ import org.apache.log4j.Logger;
 
 import ua.lviv.lgs.dao.UserDao;
 import ua.lviv.lgs.domain.User;
+import ua.lviv.lgs.domain.UserRole;
 import ua.lviv.lgs.mappers.UserMapper;
 import ua.lviv.lgs.untils.ConectorUtils;
 
 public class UserDaoImpl implements UserDao{
 	private final static String READ_BY_ALL 			= "SELECT * FROM user";
+	private final static String READ_BY_PASSWORD			= "SELECT * FROM user WHERE password=?";
 	private final static String READ_BY_EMAIL			= "SELECT * FROM user WHERE userEmail=?";
-	private final static String CREATE_BY				= "INSERT INTO user(userEmail,userName,password) VALUES (?,?,?)";
+	private final static String CREATE_BY				= "INSERT INTO user(userEmail,userName,password,role) VALUES (?,?,?,?)";
 	private final static String READ_BY_ID 				= "SELECT * FROM user WHERE id = ?";
 	private final static String UPDATE_BY_ID 			= "UPDATE user SET nameEmail=?,userName =?,password =? WHERE id = ?";
 	private final static String DELETE_BY_ID 			= "DELETE FROM user WHERE  id = ?";
@@ -49,6 +51,7 @@ public class UserDaoImpl implements UserDao{
 			preparedStatement.setString(1,user.getUserEmail());
 			preparedStatement.setString(2,user.getUserName());
 			preparedStatement.setString(3,user.getPassword());
+			preparedStatement.setString(4,user.getRoleString());
 			preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
 			resultSet.next();
@@ -70,7 +73,8 @@ public class UserDaoImpl implements UserDao{
 			String nameEmail = resultSet.getString("userEmail");
 			String userName = resultSet.getString("userName");
 			String password = resultSet.getString("password");
-			user = new User(userid,password, nameEmail,userName);
+			String role = resultSet.getString("role");
+			user = new User(userid,password, nameEmail,userName,UserRole.valueOf(role));
 		} catch (SQLException e) {
 		}return user;	
 	}
@@ -178,10 +182,30 @@ public class UserDaoImpl implements UserDao{
 				String nameEmail = resultSet.getString("userEmail");
 				String userName = resultSet.getString("userName");
 				String password = resultSet.getString("password");
-				user = new User(id,password, nameEmail,userName);
+				String role = resultSet.getString("role");
+				user = new User(id,password, nameEmail,userName,UserRole.valueOf(role));
 			}
 		} catch (SQLException e) {
 			LOGGER.error(e);
 		}return user;	
+	}
+	@Override
+	public User getByUserPassword(String password) throws SQLException {
+		User user = null;
+		try {
+			preparedStatement = connection.prepareStatement(READ_BY_PASSWORD);
+			preparedStatement.setString(1, password);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()){
+				Integer id = resultSet.getInt("id");
+				String nameEmail = resultSet.getString("userEmail");
+				String userName = resultSet.getString("userName");
+				String passwordUser = resultSet.getString("password");
+				String role = resultSet.getString("role");
+				user = new User(id,passwordUser, nameEmail,userName,UserRole.valueOf(role));
+			}
+		} catch (SQLException e) {
+			LOGGER.error(e);
+		}return user;
 	}
 }

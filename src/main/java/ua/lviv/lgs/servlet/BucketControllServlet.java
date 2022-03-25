@@ -97,7 +97,7 @@ public class BucketControllServlet extends HttpServlet {
 		
 		
 			try {
-				String bucketId = req.getParameter("id");
+				String bucketId = req.getParameter("bucketId");
 				bucketService.delete(Integer.parseInt(bucketId));
 			} catch (NumberFormatException | SQLException e) {
 				// TODO Auto-generated catch block

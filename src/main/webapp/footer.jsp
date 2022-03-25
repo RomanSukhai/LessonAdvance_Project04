@@ -51,5 +51,5 @@
  
     </body>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="JavaScript/bucket.js"></script>
+        <script src="bucket.js"></script>
     </html>

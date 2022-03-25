@@ -7,19 +7,34 @@ public class User {
 	private String password;
 	private String userEmail;
 	private String userName;
-	public User(Integer id, String password, String userEmail, String userName) {
+	private UserRole role;
+	public User(Integer id, String password, String userEmail, String userName,UserRole role) {
 		super();
 		this.id = id;
 		this.password = password;
 		this.userEmail = userEmail;
 		this.userName = userName;
+		this.role = role;
 	}
 	
-	public User(String password, String userEmail, String userName) {
+	public User(String password, String userEmail, String userName,UserRole role) {
 		super();
 		this.password = password;
 		this.userEmail = userEmail;
 		this.userName = userName;
+		this.role = role;
+	}
+
+	
+	public UserRole getRole() {
+		return role;
+	}
+	public String getRoleString() {
+		return role.toString();
+	}
+
+	public void setRole(UserRole role) {
+		this.role = role;
 	}
 
 	public int getId() {
